@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mobile Virtual Camera</string>
+    <string name="tagline">4K Ultra HD Virtual Webcam</string>
+    <string name="btn_start_stream">Start Streaming</string>
+    <string name="btn_stop_stream">Stop Streaming</string>
+    <string name="btn_pair">Pair with PC</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_guest">Continue as Guest (Local LAN)</string>
+</resources>
+
