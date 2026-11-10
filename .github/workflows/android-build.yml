@@ -38,7 +38,9 @@ jobs:
         if: github.event.inputs.build_type != 'release'
         run: |
           cd android
-          gradle assembleDebug --no-daemon --stacktrace
+          gradle wrapper --gradle-version 8.9
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
           mkdir -p ../packages/android
           cp app/build/outputs/apk/debug/*.apk ../packages/android/app-debug.apk
 
@@ -46,7 +48,9 @@ jobs:
         if: github.event.inputs.build_type == 'release' || startsWith(github.ref, 'refs/tags/v')
         run: |
           cd android
-          gradle assembleRelease --no-daemon --stacktrace
+          gradle wrapper --gradle-version 8.9
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --stacktrace
           mkdir -p ../packages/android
           cp app/build/outputs/apk/release/*.apk ../packages/android/app-release.apk
 
