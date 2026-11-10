@@ -71,11 +71,13 @@ jobs:
         if: env.APPLE_CERT == '' || env.BUILD_TYPE == 'unsigned'
         run: |
           cd ios/MobileVirtualCamera
-          echo "==> Building app without code signing for sideloading/testing..."
+          echo "==> Listing available targets and schemes..."
+          xcodebuild -list -project MobileVirtualCamera.xcodeproj
           
+          echo "==> Building app without code signing for sideloading/testing..."
           xcodebuild clean build \
             -project MobileVirtualCamera.xcodeproj \
-            -scheme MobileVirtualCamera \
+            -target MobileVirtualCamera \
             -configuration Release \
             -sdk iphoneos \
             -derivedDataPath build/DerivedData \

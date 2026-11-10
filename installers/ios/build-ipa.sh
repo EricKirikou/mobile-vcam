@@ -57,7 +57,7 @@ else
     echo "[3/4] Compiling release binary without signing..."
     xcodebuild clean build \
         -project "${PROJECT_DIR}/MobileVirtualCamera.xcodeproj" \
-        -scheme "MobileVirtualCamera" \
+        -target "MobileVirtualCamera" \
         -configuration Release \
         -sdk iphoneos \
         -derivedDataPath "${BUILD_DIR}/DerivedData" \
