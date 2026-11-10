@@ -20,7 +20,7 @@ on:
 jobs:
   build-ios:
     name: Build iOS IPA
-    runs-on: macos-14
+    runs-on: macos-latest
     timeout-minutes: 60
     env:
       APPLE_CERT: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
@@ -31,10 +31,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Select Xcode Version
-        run: |
-          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-          xcodebuild -version
+      - name: Show Xcode Version
+        run: xcodebuild -version
 
       - name: Cache SPM Packages
         uses: actions/cache@v4
