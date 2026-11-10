@@ -1,0 +1,238 @@
+<UserControl x:Class="MobileVirtualCamera.Desktop.Views.Pages.SettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MobileVirtualCamera.Desktop.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel}">
+
+    <UserControl.Resources>
+        <!-- Style for Dropdown items to ensure bold, clear black text -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#E8E6FF"/>
+                    <Setter Property="Foreground" Value="#000000"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#6C63FF"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Base ComboBox Style for Settings -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#3D3D6B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="0,0,10,0">
+
+            <!-- ═══ Header ═══════════════════════════════════════════════════════ -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Settings &amp; Preferences"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="#E0E0FF"/>
+                    <TextBlock Text="Configure 4K video encoding, virtual camera driver, and network protocols"
+                               FontSize="12" Foreground="#8080B0" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- Actions -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="Reset Defaults"
+                            Command="{Binding ResetToDefaultsCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Margin="0,0,8,0" Padding="14,8"/>
+                    <Button Content="💾 Save Settings"
+                            Command="{Binding SaveSettingsCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Padding="18,8"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- ═══ Section 1: Video & 4K Stream Quality ═════════════════════════ -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="4K VIDEO &amp; STREAM QUALITY" FontSize="12" FontWeight="Bold" Foreground="#6C63FF" Margin="0,0,0,16"/>
+
+                    <!-- Resolution & FPS Row -->
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Resolution -->
+                        <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock Text="Output Resolution" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                            <ComboBox ItemsSource="{Binding ResolutionOptions}"
+                                      SelectedItem="{Binding SelectedResolution}"
+                                      Background="#FFFFFF" Foreground="#000000"
+                                      BorderBrush="#3D3D6B" Padding="10,8" FontSize="13"/>
+                        </StackPanel>
+
+                        <!-- FPS -->
+                        <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                            <TextBlock Text="Target Frame Rate" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                            <ComboBox ItemsSource="{Binding FpsOptions}"
+                                      SelectedItem="{Binding SelectedFps}"
+                                      Background="#FFFFFF" Foreground="#000000"
+                                      BorderBrush="#3D3D6B" Padding="10,8" FontSize="13"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Codec & Bitrate -->
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Codec -->
+                        <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock Text="Video Codec" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                            <ComboBox ItemsSource="{Binding CodecOptions}"
+                                      SelectedItem="{Binding SelectedCodec}"
+                                      Background="#FFFFFF" Foreground="#000000"
+                                      BorderBrush="#3D3D6B" Padding="10,8" FontSize="13"/>
+                        </StackPanel>
+
+                        <!-- Target Bitrate -->
+                        <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                            <Grid Margin="0,0,0,6">
+                                <TextBlock Text="Target Bitrate" FontSize="11" Foreground="#A0A0C0"/>
+                                <TextBlock Text="{Binding SelectedBitrateKbps, StringFormat='{}{0} kbps'}"
+                                           FontSize="11" FontWeight="Bold" Foreground="#00FF88" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <Slider Minimum="2000" Maximum="50000" SmallChange="1000" LargeChange="5000"
+                                    Value="{Binding SelectedBitrateKbps}"
+                                    VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Hardware Encoding & Low Latency Switches -->
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                        <CheckBox IsChecked="{Binding EnableHardwareEncoding}"
+                                  Content="Hardware Accelerated GPU Encoding (NVENC / Intel QSV / AMD AMF)"
+                                  Foreground="#E0E0FF" FontSize="12" Margin="0,0,24,0"/>
+                        <CheckBox IsChecked="{Binding EnableLowLatencyMode}"
+                                  Content="Ultra-Low Latency Mode (&lt;100ms)"
+                                  Foreground="#E0E0FF" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- ═══ Section 2: Virtual Camera System Driver ═══════════════════════ -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="VIRTUAL CAMERA SYSTEM DRIVER" FontSize="12" FontWeight="Bold" Foreground="#00FF88" Margin="0,0,0,16"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="System Virtual Webcam: " FontSize="13" FontWeight="SemiBold" Foreground="#E0E0FF"/>
+                                <TextBlock Text="{Binding VirtualCameraDriverStatus}" FontSize="13" FontWeight="Bold" Foreground="#00FF88"/>
+                            </StackPanel>
+                            <TextBlock Text="Exposes a standard Windows webcam device named 'Mobile Virtual Camera' to any application."
+                                       FontSize="11" Foreground="#8080B0" Margin="0,4,0,0"/>
+                        </StackPanel>
+
+                        <Button Grid.Column="1" Content="Toggle Driver"
+                                Command="{Binding ToggleVirtualCameraCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Padding="16,8"/>
+                    </Grid>
+
+                    <!-- Compatible applications badge bar -->
+                    <Border Background="#1E1E3A" CornerRadius="8" Padding="12,8" Margin="0,16,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Works natively with: " FontSize="11" Foreground="#7070A0" VerticalAlignment="Center"/>
+                            <TextBlock Text="OBS Studio • Zoom • Microsoft Teams • Discord • Google Meet • Chrome"
+                                       FontSize="11" FontWeight="SemiBold" Foreground="#E0E0FF" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- ═══ Section 3: Server & Network ═══════════════════════════════════ -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="NETWORK &amp; SIGNALING" FontSize="12" FontWeight="Bold" Foreground="#4ECDC4" Margin="0,0,0,16"/>
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="0,0,12,0">
+                            <TextBlock Text="Backend Server URL (Optional for Cloud Sync)" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                            <TextBox Text="{Binding ServerUrl, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource FluentTextBoxStyle}"
+                                     Padding="12,8" FontSize="13"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                            <CheckBox IsChecked="{Binding UseSecureConnection}"
+                                      Content="Use TLS / HTTPS / WSS"
+                                      Foreground="#E0E0FF" FontSize="12" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="ℹ️ When offline or on local Wi-Fi, the app automatically switches to direct zero-config LAN mode."
+                               FontSize="11" Foreground="#7070A0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- ═══ Section 4: Notifications ══════════════════════════════════════ -->
+            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="NOTIFICATIONS &amp; BATTERY ALERTS" FontSize="12" FontWeight="Bold" Foreground="#FFE66D" Margin="0,0,0,16"/>
+
+                    <CheckBox IsChecked="{Binding ShowSystemNotifications}"
+                              Content="Show Windows notifications on device connect / disconnect"
+                              Foreground="#E0E0FF" FontSize="12" Margin="0,0,0,10"/>
+
+                    <CheckBox IsChecked="{Binding ShowBatteryWarnings}"
+                              Content="Alert when mobile phone battery drops below 20%"
+                              Foreground="#E0E0FF" FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Status Banner -->
+            <Border Background="#16162A" CornerRadius="8" Padding="12,8" Margin="0,4,0,0"
+                    BorderBrush="#2A2A4A" BorderThickness="1">
+                <TextBlock Text="{Binding StatusMessage, FallbackValue='Settings are up to date.'}"
+                           FontSize="11" Foreground="#A0A0C0"/>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
+

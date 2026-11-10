@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ../../backend
+      dockerfile: ../installers/backend/Dockerfile
+    container_name: mvc-signaling-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+      - "50000-50100:50000-50100/udp"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/mobilevirtualcamera
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=change_this_to_a_secure_random_string_in_production
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - mvc-uploads:/usr/src/app/uploads
+
+  mongo:
+    image: mongo:7.0
+    container_name: mvc-mongo
+    restart: unless-stopped
+    volumes:
+      - mvc-mongo-data:/data/db
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: mvc-redis
+    restart: unless-stopped
+    volumes:
+      - mvc-redis-data:/data
+
+volumes:
+  mvc-uploads:
+  mvc-mongo-data:
+  mvc-redis-data:
+

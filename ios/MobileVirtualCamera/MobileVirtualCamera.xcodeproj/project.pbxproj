@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A100000129B7F10000000001 /* MobileVirtualCameraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000129B7F10000000001 /* MobileVirtualCameraApp.swift */; };
+		A100000229B7F10000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000229B7F10000000001 /* AppDelegate.swift */; };
+		A100000329B7F10000000001 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000329B7F10000000001 /* CameraManager.swift */; };
+		A100000429B7F10000000001 /* CameraControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000429B7F10000000001 /* CameraControls.swift */; };
+		A100000529B7F10000000001 /* CameraConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000529B7F10000000001 /* CameraConfiguration.swift */; };
+		A100000629B7F10000000001 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000629B7F10000000001 /* CameraPreviewView.swift */; };
+		A100000729B7F10000000001 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000729B7F10000000001 /* WebRTCClient.swift */; };
+		A100000829B7F10000000001 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000829B7F10000000001 /* SignalingClient.swift */; };
+		A100000929B7F10000000001 /* RTCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000929B7F10000000001 /* RTCConfig.swift */; };
+		A100000A29B7F10000000001 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000A29B7F10000000001 /* APIClient.swift */; };
+		A100000B29B7F10000000001 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000B29B7F10000000001 /* APIEndpoints.swift */; };
+		A100000C29B7F10000000001 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000C29B7F10000000001 /* AuthService.swift */; };
+		A100000D29B7F10000000001 /* PairingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000D29B7F10000000001 /* PairingService.swift */; };
+		A100000E29B7F10000000001 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000E29B7F10000000001 /* NetworkMonitor.swift */; };
+		A100000F29B7F10000000001 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000F29B7F10000000001 /* KeychainHelper.swift */; };
+		A100001029B7F10000000001 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001029B7F10000000001 /* UserPreferences.swift */; };
+		A100001129B7F10000000001 /* DeviceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001129B7F10000000001 /* DeviceModels.swift */; };
+		A100001229B7F10000000001 /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001229B7F10000000001 /* UserModels.swift */; };
+		A100001329B7F10000000001 /* PairingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001329B7F10000000001 /* PairingModels.swift */; };
+		A100001429B7F10000000001 /* SignalingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001429B7F10000000001 /* SignalingModels.swift */; };
+		A100001529B7F10000000001 /* CameraRPCModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001529B7F10000000001 /* CameraRPCModels.swift */; };
+		A100001629B7F10000000001 /* TelemetryCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001629B7F10000000001 /* TelemetryCollector.swift */; };
+		A100001729B7F10000000001 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001729B7F10000000001 /* AppTheme.swift */; };
+		A100001829B7F10000000001 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001829B7F10000000001 /* AppNavigation.swift */; };
+		A100001929B7F10000000001 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001929B7F10000000001 /* LoginView.swift */; };
+		A100001A29B7F10000000001 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001A29B7F10000000001 /* PairingView.swift */; };
+		A100001B29B7F10000000001 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001B29B7F10000000001 /* QRScannerView.swift */; };
+		A100001C29B7F10000000001 /* ManualPairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001C29B7F10000000001 /* ManualPairingView.swift */; };
+		A100001D29B7F10000000001 /* CameraStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001D29B7F10000000001 /* CameraStreamView.swift */; };
+		A100001E29B7F10000000001 /* MetricsOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001E29B7F10000000001 /* MetricsOverlayView.swift */; };
+		A100001F29B7F10000000001 /* QuickControlsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001F29B7F10000000001 /* QuickControlsOverlay.swift */; };
+		A100002029B7F10000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002029B7F10000000001 /* SettingsView.swift */; };
+		A100002129B7F10000000001 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002129B7F10000000001 /* GlassCard.swift */; };
+		A100002229B7F10000000001 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002229B7F10000000001 /* AuthViewModel.swift */; };
+		A100002329B7F10000000001 /* PairingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002329B7F10000000001 /* PairingViewModel.swift */; };
+		A100002429B7F10000000001 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002429B7F10000000001 /* CameraViewModel.swift */; };
+		A100002729B7F10000000001 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100002729B7F10000000001 /* InstructionsView.swift */; };
+		A100002529B7F10000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B100002529B7F10000000001 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C100000129B7F10000000001 /* MobileVirtualCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileVirtualCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B100000129B7F10000000001 /* MobileVirtualCameraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVirtualCameraApp.swift; sourceTree = "<group>"; };
+		B100000229B7F10000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B100000329B7F10000000001 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		B100000429B7F10000000001 /* CameraControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControls.swift; sourceTree = "<group>"; };
+		B100000529B7F10000000001 /* CameraConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraConfiguration.swift; sourceTree = "<group>"; };
+		B100000629B7F10000000001 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		B100000729B7F10000000001 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		B100000829B7F10000000001 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
+		B100000929B7F10000000001 /* RTCConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCConfig.swift; sourceTree = "<group>"; };
+		B100000A29B7F10000000001 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		B100000B29B7F10000000001 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		B100000C29B7F10000000001 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		B100000D29B7F10000000001 /* PairingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingService.swift; sourceTree = "<group>"; };
+		B100000E29B7F10000000001 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		B100000F29B7F10000000001 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		B100001029B7F10000000001 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		B100001129B7F10000000001 /* DeviceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModels.swift; sourceTree = "<group>"; };
+		B100001229B7F10000000001 /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
+		B100001329B7F10000000001 /* PairingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingModels.swift; sourceTree = "<group>"; };
+		B100001429B7F10000000001 /* SignalingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingModels.swift; sourceTree = "<group>"; };
+		B100001529B7F10000000001 /* CameraRPCModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRPCModels.swift; sourceTree = "<group>"; };
+		B100001629B7F10000000001 /* TelemetryCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryCollector.swift; sourceTree = "<group>"; };
+		B100001729B7F10000000001 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		B100001829B7F10000000001 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
+		B100001929B7F10000000001 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B100001A29B7F10000000001 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
+		B100001B29B7F10000000001 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
+		B100001C29B7F10000000001 /* ManualPairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualPairingView.swift; sourceTree = "<group>"; };
+		B100001D29B7F10000000001 /* CameraStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraStreamView.swift; sourceTree = "<group>"; };
+		B100001E29B7F10000000001 /* MetricsOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsOverlayView.swift; sourceTree = "<group>"; };
+		B100001F29B7F10000000001 /* QuickControlsOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickControlsOverlay.swift; sourceTree = "<group>"; };
+		B100002029B7F10000000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B100002129B7F10000000001 /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		B100002229B7F10000000001 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		B100002329B7F10000000001 /* PairingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingViewModel.swift; sourceTree = "<group>"; };
+		B100002429B7F10000000001 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		B100002729B7F10000000001 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
+		B100002529B7F10000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B100002629B7F10000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D100000129B7F10000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E100000129B7F10000000001 = {
+			isa = PBXGroup;
+			children = (
+				E100000229B7F10000000001 /* MobileVirtualCamera */,
+				E100000329B7F10000000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E100000229B7F10000000001 /* MobileVirtualCamera */ = {
+			isa = PBXGroup;
+			children = (
+				E100000429B7F10000000001 /* App */,
+				E100000529B7F10000000001 /* Core */,
+				E100000629B7F10000000001 /* UI */,
+				E100000729B7F10000000001 /* Resources */,
+			);
+			path = MobileVirtualCamera;
+			sourceTree = "<group>";
+		};
+		E100000329B7F10000000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C100000129B7F10000000001 /* MobileVirtualCamera.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E100000429B7F10000000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B100000129B7F10000000001 /* MobileVirtualCameraApp.swift */,
+				B100000229B7F10000000001 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E100000529B7F10000000001 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B100000329B7F10000000001 /* CameraManager.swift */,
+				B100000429B7F10000000001 /* CameraControls.swift */,
+				B100000529B7F10000000001 /* CameraConfiguration.swift */,
+				B100000629B7F10000000001 /* CameraPreviewView.swift */,
+				B100000729B7F10000000001 /* WebRTCClient.swift */,
+				B100000829B7F10000000001 /* SignalingClient.swift */,
+				B100000929B7F10000000001 /* RTCConfig.swift */,
+				B100000A29B7F10000000001 /* APIClient.swift */,
+				B100000B29B7F10000000001 /* APIEndpoints.swift */,
+				B100000C29B7F10000000001 /* AuthService.swift */,
+				B100000D29B7F10000000001 /* PairingService.swift */,
+				B100000E29B7F10000000001 /* NetworkMonitor.swift */,
+				B100000F29B7F10000000001 /* KeychainHelper.swift */,
+				B100001029B7F10000000001 /* UserPreferences.swift */,
+				B100001129B7F10000000001 /* DeviceModels.swift */,
+				B100001229B7F10000000001 /* UserModels.swift */,
+				B100001329B7F10000000001 /* PairingModels.swift */,
+				B100001429B7F10000000001 /* SignalingModels.swift */,
+				B100001529B7F10000000001 /* CameraRPCModels.swift */,
+				B100001629B7F10000000001 /* TelemetryCollector.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E100000629B7F10000000001 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B100001729B7F10000000001 /* AppTheme.swift */,
+				B100001829B7F10000000001 /* AppNavigation.swift */,
+				B100001929B7F10000000001 /* LoginView.swift */,
+				B100001A29B7F10000000001 /* PairingView.swift */,
+				B100001B29B7F10000000001 /* QRScannerView.swift */,
+				B100001C29B7F10000000001 /* ManualPairingView.swift */,
+				B100001D29B7F10000000001 /* CameraStreamView.swift */,
+				B100001E29B7F10000000001 /* MetricsOverlayView.swift */,
+				B100001F29B7F10000000001 /* QuickControlsOverlay.swift */,
+				B100002029B7F10000000001 /* SettingsView.swift */,
+				B100002129B7F10000000001 /* GlassCard.swift */,
+				B100002229B7F10000000001 /* AuthViewModel.swift */,
+				B100002329B7F10000000001 /* PairingViewModel.swift */,
+				B100002429B7F10000000001 /* CameraViewModel.swift */,
+				B100002729B7F10000000001 /* InstructionsView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E100000729B7F10000000001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B100002529B7F10000000001 /* Assets.xcassets */,
+				B100002629B7F10000000001 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F100000129B7F10000000001 /* MobileVirtualCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = G100000129B7F10000000001 /* Build configuration list for PBXNativeTarget "MobileVirtualCamera" */;
+			buildPhases = (
+				H100000129B7F10000000001 /* Sources */,
+				D100000129B7F10000000001 /* Frameworks */,
+				I100000129B7F10000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileVirtualCamera;
+			productName = MobileVirtualCamera;
+			productReference = C100000129B7F10000000001 /* MobileVirtualCamera.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		J100000129B7F10000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F100000129B7F10000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = K100000129B7F10000000001 /* Build configuration list for PBXProject "MobileVirtualCamera" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E100000129B7F10000000001;
+			productRefGroup = E100000329B7F10000000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F100000129B7F10000000001 /* MobileVirtualCamera */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		I100000129B7F10000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100002529B7F10000000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		H100000129B7F10000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000129B7F10000000001 /* MobileVirtualCameraApp.swift in Sources */,
+				A100000229B7F10000000001 /* AppDelegate.swift in Sources */,
+				A100000329B7F10000000001 /* CameraManager.swift in Sources */,
+				A100000429B7F10000000001 /* CameraControls.swift in Sources */,
+				A100000529B7F10000000001 /* CameraConfiguration.swift in Sources */,
+				A100000629B7F10000000001 /* CameraPreviewView.swift in Sources */,
+				A100000729B7F10000000001 /* WebRTCClient.swift in Sources */,
+				A100000829B7F10000000001 /* SignalingClient.swift in Sources */,
+				A100000929B7F10000000001 /* RTCConfig.swift in Sources */,
+				A100000A29B7F10000000001 /* APIClient.swift in Sources */,
+				A100000B29B7F10000000001 /* APIEndpoints.swift in Sources */,
+				A100000C29B7F10000000001 /* AuthService.swift in Sources */,
+				A100000D29B7F10000000001 /* PairingService.swift in Sources */,
+				A100000E29B7F10000000001 /* NetworkMonitor.swift in Sources */,
+				A100000F29B7F10000000001 /* KeychainHelper.swift in Sources */,
+				A100001029B7F10000000001 /* UserPreferences.swift in Sources */,
+				A100001129B7F10000000001 /* DeviceModels.swift in Sources */,
+				A100001229B7F10000000001 /* UserModels.swift in Sources */,
+				A100001329B7F10000000001 /* PairingModels.swift in Sources */,
+				A100001429B7F10000000001 /* SignalingModels.swift in Sources */,
+				A100001529B7F10000000001 /* CameraRPCModels.swift in Sources */,
+				A100001629B7F10000000001 /* TelemetryCollector.swift in Sources */,
+				A100001729B7F10000000001 /* AppTheme.swift in Sources */,
+				A100001829B7F10000000001 /* AppNavigation.swift in Sources */,
+				A100001929B7F10000000001 /* LoginView.swift in Sources */,
+				A100001A29B7F10000000001 /* PairingView.swift in Sources */,
+				A100001B29B7F10000000001 /* QRScannerView.swift in Sources */,
+				A100001C29B7F10000000001 /* ManualPairingView.swift in Sources */,
+				A100001D29B7F10000000001 /* CameraStreamView.swift in Sources */,
+				A100001E29B7F10000000001 /* MetricsOverlayView.swift in Sources */,
+				A100001F29B7F10000000001 /* QuickControlsOverlay.swift in Sources */,
+				A100002029B7F10000000001 /* SettingsView.swift in Sources */,
+				A100002129B7F10000000001 /* GlassCard.swift in Sources */,
+				A100002229B7F10000000001 /* AuthViewModel.swift in Sources */,
+				A100002329B7F10000000001 /* PairingViewModel.swift in Sources */,
+				A100002429B7F10000000001 /* CameraViewModel.swift in Sources */,
+				A100002729B7F10000000001 /* InstructionsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		L100000129B7F10000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		L100000229B7F10000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		M100000129B7F10000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MobileVirtualCamera/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobilevirtualcamera.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		M100000229B7F10000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MobileVirtualCamera/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobilevirtualcamera.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		K100000129B7F10000000001 /* Build configuration list for PBXProject "MobileVirtualCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				L100000129B7F10000000001 /* Debug */,
+				L100000229B7F10000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		G100000129B7F10000000001 /* Build configuration list for PBXNativeTarget "MobileVirtualCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				M100000129B7F10000000001 /* Debug */,
+				M100000229B7F10000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = J100000129B7F10000000001 /* Project object */;
+}
+

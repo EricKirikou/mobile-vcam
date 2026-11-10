@@ -1,0 +1,87 @@
+<UserControl x:Class="MobileVirtualCamera.Desktop.Views.Pages.LoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MobileVirtualCamera.Desktop.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:LoginViewModel}">
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Style="{StaticResource CardStyle}" Width="440" Padding="32">
+            <StackPanel>
+
+                <!-- Logo / Title -->
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <Border Background="#6C63FF" CornerRadius="16" Width="52" Height="52" HorizontalAlignment="Center" Margin="0,0,0,12">
+                        <TextBlock Text="🎥" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Sign In to Cloud Sync" FontSize="20" FontWeight="Bold" Foreground="#E0E0FF" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Optional: Synchronize settings &amp; stream across cellular / LTE"
+                               FontSize="11" Foreground="#8080B0" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- Local LAN Notice Banner -->
+                <Border Background="#1A2820" BorderBrush="#00FF88" BorderThickness="1" CornerRadius="8" Padding="12,8" Margin="0,0,0,20">
+                    <TextBlock Text="💡 Local Wi-Fi pairing works 100% without an account. You can continue as Guest at any time."
+                               FontSize="11" Foreground="#70C090" TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Email Input -->
+                <TextBlock Text="Email Address" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource FluentTextBoxStyle}"
+                         Margin="0,0,0,16"/>
+
+                <!-- Password Input -->
+                <TextBlock Text="Password" FontSize="11" Foreground="#A0A0C0" Margin="0,0,0,6"/>
+                <PasswordBox x:Name="UserPasswordBox"
+                             PasswordChanged="UserPasswordBox_PasswordChanged"
+                             Background="#1E1E3A" Foreground="#E0E0FF"
+                             BorderBrush="#3D3D6B" BorderThickness="1"
+                             Padding="12,10" FontSize="13" Margin="0,0,0,16">
+                    <PasswordBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </PasswordBox.Resources>
+                </PasswordBox>
+
+                <!-- Remember Me -->
+                <CheckBox IsChecked="{Binding RememberMe}"
+                          Content="Keep me signed in"
+                          Foreground="#A0A0C0" FontSize="12" Margin="0,0,0,16"/>
+
+                <!-- Error Message -->
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="#FF6B6B"
+                           FontSize="11" TextWrapping="Wrap" Margin="0,0,0,12"
+                           Visibility="{Binding ErrorMessage.Length, FallbackValue=Collapsed}"/>
+
+                <!-- Sign In Button -->
+                <Button Content="Sign In"
+                        Command="{Binding LoginCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Padding="0,12" Margin="0,0,0,12"/>
+
+                <!-- Divider -->
+                <Grid Margin="0,8,0,16">
+                    <Separator Background="#2A2A4A"/>
+                    <Border Background="#16162A" Padding="8,0" HorizontalAlignment="Center">
+                        <TextBlock Text="OR USE WITHOUT ACCOUNT" FontSize="10" FontWeight="SemiBold" Foreground="#606080"/>
+                    </Border>
+                </Grid>
+
+                <!-- Continue as Guest (Recommended / Direct LAN) -->
+                <Button Content="🚀 Continue as Guest (Local Wi-Fi Mode)"
+                        Command="{Binding ContinueAsGuestCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Padding="0,12"/>
+
+                <TextBlock Text="No account or password required. Pairs with phone over your local network."
+                           FontSize="10" Foreground="#606080" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+

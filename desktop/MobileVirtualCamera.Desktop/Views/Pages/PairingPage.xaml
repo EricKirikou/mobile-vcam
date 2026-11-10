@@ -1,0 +1,236 @@
+<UserControl x:Class="MobileVirtualCamera.Desktop.Views.Pages.PairingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MobileVirtualCamera.Desktop.ViewModels"
+             xmlns:conv="clr-namespace:MobileVirtualCamera.Desktop.Converters"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PairingViewModel}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <conv:InverseBooleanToVisibilityConverter x:Key="InvBoolToVisConverter"/>
+        <conv:NullToVisibilityConverter x:Key="NullToVisConverter"/>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="0,0,10,0">
+
+            <!-- ═══ Header ═══════════════════════════════════════════════════════ -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Pair Mobile Device"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="#E0E0FF"/>
+                    <TextBlock Text="Connect your iPhone or Android phone over Wi-Fi / LAN to stream in 4K"
+                               FontSize="12" Foreground="#8080B0" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- Back to Dashboard -->
+                <Button Grid.Column="1" Content="← Back to Dashboard"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.NavigateToDashboardCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Padding="14,6" VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- ═══ Main Pairing Columns ══════════════════════════════════════════ -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- ─── Left Column: QR Code & PIN ─────────────────────────────── -->
+                <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="SCAN WITH PHONE" FontSize="11" FontWeight="Bold" Foreground="#6C63FF"
+                                   HorizontalAlignment="Center" Margin="0,0,0,12"/>
+
+                        <!-- QR Code Container -->
+                        <Border Background="#16162A" BorderBrush="#3D3D6B" BorderThickness="2"
+                                CornerRadius="12" Padding="12" Width="220" Height="220" HorizontalAlignment="Center">
+                            <Grid>
+                                <!-- Rendered QR Code Image -->
+                                <Image Source="{Binding QrCodeImage}" Stretch="Uniform"
+                                       Visibility="{Binding QrCodeImage, Converter={StaticResource NullToVisConverter}}"/>
+
+                                <!-- Loading / Generating overlay -->
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                                            Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}">
+                                    <ProgressBar IsIndeterminate="True" Width="80" Height="4" Margin="0,0,0,8"/>
+                                    <TextBlock Text="Generating QR..." Foreground="#8080B0" FontSize="11"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- 6-Digit Pairing PIN Code -->
+                        <TextBlock Text="Or Enter 6-Digit Code" FontSize="12" Foreground="#8080B0"
+                                   HorizontalAlignment="Center" Margin="0,16,0,6"/>
+
+                        <Border Background="#1E1E3A" CornerRadius="8" Padding="16,8"
+                                BorderBrush="#6C63FF" BorderThickness="1" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding PairCode, FallbackValue='--- ---'}"
+                                           FontSize="26" FontWeight="Bold" FontFamily="Consolas, monospace"
+                                           Foreground="#00FF88"/>
+                                <Button Content="📋" Command="{Binding CopyPairCodeCommand}"
+                                        Style="{StaticResource TitleBarButtonStyle}"
+                                        Margin="12,0,0,0" ToolTip="Copy code"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Refresh & Polling status -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0">
+                            <Button Content="🔄 Refresh Code"
+                                    Command="{Binding GeneratePairingCommand}"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    Padding="14,8" Margin="0,0,8,0"/>
+                        </StackPanel>
+
+                        <!-- Status text -->
+                        <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" TextAlignment="Center"
+                                   FontSize="11" Foreground="#A0A0C0" Margin="0,12,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ─── Right Column: Direct LAN & Network Discovery ───────────── -->
+                <StackPanel Grid.Column="1">
+
+                    <!-- Local Wi-Fi Info Card -->
+                    <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16" Padding="16">
+                        <StackPanel>
+                            <TextBlock Text="LOCAL WI-FI CONNECTION INFO" FontSize="11" FontWeight="Bold" Foreground="#4ECDC4"/>
+                            <TextBlock Text="Your phone can directly connect to this PC over your home or office Wi-Fi network."
+                                       FontSize="11" Foreground="#8080B0" Margin="0,4,0,12"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="PC Local IP Address" FontSize="10" Foreground="#7070A0"/>
+                                    <TextBlock Text="{Binding LocalIpAddress}" FontSize="15" FontWeight="Bold" Foreground="#E0E0FF"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="LAN Pairing Port" FontSize="10" Foreground="#7070A0"/>
+                                    <TextBlock Text="{Binding LocalPort, StringFormat='{}Port {0}'}" FontSize="15" FontWeight="Bold" Foreground="#00FF88"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Manual IP Connection Card -->
+                    <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16" Padding="16">
+                        <StackPanel>
+                            <TextBlock Text="DIRECT IP CONNECT" FontSize="11" FontWeight="Bold" Foreground="#E0E0FF"/>
+                            <TextBlock Text="If your phone shows its IP address in the app, type it here to link immediately:"
+                                       FontSize="11" Foreground="#8080B0" Margin="0,4,0,10"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Text="{Binding ManualIpAddress, UpdateSourceTrigger=PropertyChanged}"
+                                         Style="{StaticResource FluentTextBoxStyle}"
+                                         Padding="12,8" Margin="0,0,8,0"
+                                         FontSize="13"
+                                         ToolTip="Example: 192.168.1.45"/>
+
+                                <Button Grid.Column="1" Content="Connect to Phone"
+                                        Command="{Binding ConnectManuallyCommand}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Padding="16,8"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Network Auto-Discovery Card -->
+                    <Border Style="{StaticResource CardStyle}" Padding="16">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="WI-FI DEVICE DISCOVERY" FontSize="11" FontWeight="Bold" Foreground="#E0E0FF"/>
+                                    <TextBlock Text="Search your local network for phones running Mobile Virtual Camera."
+                                               FontSize="11" Foreground="#8080B0" Margin="0,2,0,0"/>
+                                </StackPanel>
+                                <Button Content="🔍 Scan Wi-Fi"
+                                        Command="{Binding ScanNetworkCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        HorizontalAlignment="Right" Padding="12,6"/>
+                            </Grid>
+
+                            <!-- Scanning indicator -->
+                            <ProgressBar IsIndeterminate="True" Height="3" Margin="0,0,0,8"
+                                         Visibility="{Binding IsScanning, Converter={StaticResource BoolToVisConverter}}"/>
+
+                            <!-- Discovered devices list -->
+                            <ItemsControl ItemsSource="{Binding DiscoveredDevices}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#1E1E3A" CornerRadius="8" Padding="12,8" Margin="0,0,0,6">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Name}" FontSize="12" FontWeight="SemiBold" Foreground="#E0E0FF"/>
+                                                    <TextBlock Text="{Binding IpAddress, StringFormat='{}IP: {0}'}" FontSize="10" Foreground="#8080B0"/>
+                                                </StackPanel>
+                                                <Button Grid.Column="1" Content="Pair This Phone"
+                                                        Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ConnectToDiscoveredCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        Style="{StaticResource PrimaryButtonStyle}"
+                                                        Padding="12,4" FontSize="11"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- If none found -->
+                            <TextBlock Text="No devices discovered yet. Click 'Scan Wi-Fi' or scan the QR code."
+                                       FontSize="11" Foreground="#606080" FontStyle="Italic" Margin="0,4,0,0">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DiscoveredDevices.Count}" Value="0">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Instructions / Tips -->
+                    <Border Background="#121226" CornerRadius="8" Padding="14,10" Margin="0,16,0,0"
+                            BorderBrush="#252545" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="💡 How to connect your phone:" FontWeight="SemiBold" Foreground="#E0E0FF" FontSize="11" Margin="0,0,0,4"/>
+                            <TextBlock Text="1. Ensure your PC and Phone are connected to the same Wi-Fi router." FontSize="11" Foreground="#8080B0"/>
+                            <TextBlock Text="2. Open the Mobile Virtual Camera app on iPhone or Android." FontSize="11" Foreground="#8080B0"/>
+                            <TextBlock Text="3. Point phone camera at the QR code, or enter the 6-digit code." FontSize="11" Foreground="#8080B0"/>
+                            <TextBlock Text="4. Once connected, your phone's 4K camera will stream to your PC!" FontSize="11" Foreground="#8080B0"/>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
