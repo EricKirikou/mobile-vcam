@@ -57,14 +57,13 @@ else
     echo "[3/4] Compiling release binary without signing..."
     xcodebuild clean build \
         -project "${PROJECT_DIR}/MobileVirtualCamera.xcodeproj" \
-        -target "MobileVirtualCamera" \
+        -scheme "MobileVirtualCamera" \
         -configuration Release \
-        -sdk iphoneos \
+        -destination "generic/platform=iOS" \
         -derivedDataPath "${BUILD_DIR}/DerivedData" \
         CODE_SIGNING_ALLOWED=NO \
         CODE_SIGNING_REQUIRED=NO \
-        CODE_SIGN_IDENTITY="" \
-        AD_HOC_CODE_SIGNING_ALLOWED=YES
+        CODE_SIGN_IDENTITY=""
 
     echo "[4/4] Packaging .app into .ipa container..."
     APP_BUNDLE=$(find "${BUILD_DIR}/DerivedData" -name "MobileVirtualCamera.app" -type d | head -n 1)

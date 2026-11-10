@@ -77,14 +77,13 @@ jobs:
           echo "==> Building app without code signing for sideloading/testing..."
           xcodebuild clean build \
             -project MobileVirtualCamera.xcodeproj \
-            -target MobileVirtualCamera \
+            -scheme MobileVirtualCamera \
             -configuration Release \
-            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
             -derivedDataPath build/DerivedData \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            AD_HOC_CODE_SIGNING_ALLOWED=YES
+            CODE_SIGN_IDENTITY=""
 
           mkdir -p build/Payload
           APP_PATH=$(find build/DerivedData -name "MobileVirtualCamera.app" -type d | head -n 1)
